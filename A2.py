@@ -40,57 +40,122 @@ for j in range(len(x)):
     if small>x[j]:
         small = x[j]
         print("the smallest number is", small)
-#         continue
-# second_small = x[0]
-# for j in range(len(x)):
-#     if j != small:
-#      if second_small > x[j]:
-#             second_small = x[j]
-#             print("the second smallest number is", small)
+# second smallest number....
+second_small = None
+for j in range(len(x)):
+    if x[j] != small:
+        if second_small is None or x[j] < second_small :          # because '<' is not working in between str and int so we will use None keyword
+            second_small = x[j]
 
-#que4........
-items = []
-prices = []
-total_bill = 0
+
+if second_small is not None:
+    print("second smallest number is:", second_small)
+else:
+    print("no second smallest is present in list.")
+
+#find largest number....
+y = [10, 80, 100, 40, 60]
+largest = y[0]
+for i in range(len(y)):
+    if largest < y[i]:
+        largest = y[i]
+        print("maximum number is: ", largest)
+# now find second_largest number
+second_largest = None
+for i in range(len(y)):
+    if y[i] != largest:
+        if second_largest is None or second_largest < y[i]:
+            second_largest = y[i]
+
+if second_largest is not None:
+            print("the second maximum number is: ", second_largest)
+else:
+    print("no second maximum is present in list.")
+
+# #que4........
+# items = []
+# prices = []
+# total_bill = 0
+# while True:
+#     print('''1. Create Bill (Add Item)
+#     2. Display Items with Prices and Total Bill
+#     3. Display Total Amount Only
+#     4. Exit''')
+#
+#     choice = int(input("Enter your choice (1-4): "))
+#
+#     if choice == 1:
+#         # item = input("Enter item name: ")
+#         # price = float(input("Enter item price: "))
+#         # items.append(item)
+#         # prices.append(price)
+#         # print(f"'{item}' added to the bill price is '{price}'")
+#         print("bill created: ")
+#         prices.clear()
+#         total_bill = 0
+#     elif choice == 2:
+#         item = input("Enter item name: ")
+#         price = float(input("Enter item price: "))
+#      # items.append(item)
+#         prices.append(price)
+#         if not items:
+#             print("No items added yet.")
+#         else:
+#             print("\n--- Bill Details ---")
+#             total_bill = 0
+#             for i in range(len(items)):
+#
+#                 total_bill += prices[i]
+#             print("Total Amount: ₹", total_bill)
+#     elif choice == 3:
+#         total_bill = sum(prices)
+#         print("Total Bill Amount: ₹", total_bill)
+#
+#     elif choice == 4:
+#         print("Exiting the billing program. Thank you!")
+#         break
+#     else:
+#          print("Invalid choice! Please choose from 1 to 4.")
+#
+#
+#que 4 using dictionary...
+bill_items = {}
 while True:
-    print('''1. Create Bill (Add Item)
-    2. Display Items with Prices and Total Bill
-    3. Display Total Amount Only
-    4. Exit''')
+    print('''
+1. Create Bill 
+2. Display Items with Prices and Total Bill
+3. Display Total Amount Only
+4. Exit''')
 
     choice = int(input("Enter your choice (1-4): "))
 
     if choice == 1:
-        # item = input("Enter item name: ")
-        # price = float(input("Enter item price: "))
-        # items.append(item)
-        # prices.append(price)
-        # print(f"'{item}' added to the bill price is '{price}'")
-        print("bill created: ")
-        prices.clear()
-        total_bill = 0
-    elif choice == 2:
         item = input("Enter item name: ")
         price = float(input("Enter item price: "))
-     # items.append(item)
-        prices.append(price)
-        if not items:
+        bill_items[item] = price
+        print(f"'{item}' added to the bill with price ₹{price:.2f}")
+
+    elif choice == 2:
+        if not bill_items:
             print("No items added yet.")
         else:
             print("\n--- Bill Details ---")
-            total_bill = 0
-            for i in range(len(items)):
+            total = 0
+            for item, price in bill_items.items():
+                print(f"{item}: ₹{price:.2f}")
+                total += price
+            print("Total Amount: ₹", total)
 
-                total_bill += prices[i]
-            print("Total Amount: ₹", total_bill)
     elif choice == 3:
-        total_bill = sum(prices)
-        print("Total Bill Amount: ₹", total_bill)
+        if not bill_items:
+            print("No items added yet.")
+        else:
+            total = sum(bill_items.values())
+            print("Total Bill Amount: ₹", total)
 
     elif choice == 4:
         print("Exiting the billing program. Thank you!")
         break
+
     else:
-         print("Invalid choice! Please choose from 1 to 4.")
-
-
+        print("Invalid choice! Please choose from 1 to 4.")
