@@ -1,7 +1,26 @@
 # ********************************* Assignment_5 *******************************
-# ...................question 1.........
 import pandas as pd
 
+# ...................question 1.........
+# part(a)......
+data_set = {"digits":[10,20,30,40],
+            "alpha":['a','b','c','d']
+            }
+df = pd.Series(data_set)
+print(df)
+
+# part(b)......
+a = [1,7,3,4,6]
+s = pd.Series(a)                 #pandas series
+print(s)
+
+# part(c)...........
+a = [1,7,3,4,6]
+s = pd.Series(a)
+res = s.iloc[2]
+print(res)
+
+# ...................question 2.........
 #part(a)...........
 data = [[1,'Abhay'], [2,'Riya'], [3,'Bhumi']]
 df = pd.DataFrame(data, columns=['col1', 'col2'], index=['a.', 'b.', 'c.'])
@@ -57,7 +76,8 @@ print(df.iloc[1, 0])          #print element of second(index 1) row and first(in
 df = pd.DataFrame({'id': [1, 2, 3], 'name': ['Riya', 'Rahul', 'Abhay']})
 
 # Show first 2 rows of 'name' column
-print(df['name'].head(2))            #print(df.loc['name']) is incorrect
+df_row = df.iloc[0:2, 1]
+print(df_row)            #print(df.loc['name']) is incorrect
 
 #part(e)...........
 df = pd.DataFrame({'id': [1, 2, 3], 'marks': [90, 60, 75]})
